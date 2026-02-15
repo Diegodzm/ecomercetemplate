@@ -99,6 +99,38 @@ let cart = [];
 document.addEventListener('DOMContentLoaded', () => {
     renderProducts();
     updateCartCount();
+    
+    // Search Functionality
+    const searchForm = document.querySelector('form.d-flex');
+    if (searchForm) {
+        searchForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const searchTerm = e.target.querySelector('input').value.toLowerCase();
+            const filteredProducts = products.filter(p => 
+                p.name.toLowerCase().includes(searchTerm) || 
+                p.category.toLowerCase().includes(searchTerm)
+            );
+            
+            if (filteredProducts.length > 0) {
+                showToast(`Found ${filteredProducts.length} products!`, 'info');
+            } else {
+                showToast('No products found!', 'info');
+            }
+        });
+    }
+    
+    // Newsletter Subscription - using type="email" attribute to find the form
+    const newsletterForm = document.querySelector('form input[type="email"]')?.closest('form');
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = e.target.querySelector('input[type="email"]')?.value;
+            if (email) {
+                showToast('Thank you for subscribing!', 'success');
+                e.target.reset();
+            }
+        });
+    }
 });
 
 // Render Products
@@ -132,8 +164,8 @@ function renderProducts() {
                         ${product.originalPrice ? `<span class="product-original-price">$${product.originalPrice.toFixed(2)}</span>` : ''}
                     </div>
                 </div>
-                <div class="card-footer bg-transparent border-0">
-                    <button class="btn btn-primary w-100" onclick="addToCart(${product.id})">
+                <div class="card-footer bg-transparent border-0 pt-0">
+                    <button class="btn btn-primary w-100 add-to-cart-btn" onclick="addToCart(${product.id})">
                         <i class="bi bi-cart-plus me-2"></i>Add to Cart
                     </button>
                 </div>
@@ -295,28 +327,4 @@ function showToast(message, type = 'success') {
     }, 3000);
 }
 
-// Search Functionality
-document.querySelector('form.d-flex').addEventListener('submit', (e) => {
-    e.preventDefault();
-    const searchTerm = e.target.querySelector('input').value.toLowerCase();
-    const filteredProducts = products.filter(p => 
-        p.name.toLowerCase().includes(searchTerm) || 
-        p.category.toLowerCase().includes(searchTerm)
-    );
-    
-    if (filteredProducts.length > 0) {
-        showToast(`Found ${filteredProducts.length} products!`, 'info');
-    } else {
-        showToast('No products found!', 'info');
-    }
-});
 
-// Newsletter Subscription
-document.querySelector('form:has(input[type="email"])').addEventListener('submit', (e) => {
-    e.preventDefault();
-    const email = e.target.querySelector('input').value;
-    if (email) {
-        showToast('Thank you for subscribing!', 'success');
-        e.target.reset();
-    }
-});
