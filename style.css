@@ -30,23 +30,13 @@ body {
 }
 
 
-/* Force the specific title and navbar brand */
-.sn-pro-ecomtitle, .navbar-brand {
-    font-family: "SN Pro", sans-serif !important;
-    font-weight: 700 !important; /* Make it bold so you can see the difference */
-    letter-spacing: -0.5px;
-}
+
 
 /* Apply it to the section titles you already marked in HTML */
 .sn-pro-titlestyle {
     font-family: "SN Pro", sans-serif !important;
 }   
 
-.playwrite-cu-guides-regular {
-  font-family: "Playwrite CU Guides", cursive;
-  font-weight: 400;
-  font-style: normal;
-}
 
 @keyframes float {
     0% { transform: translateY(0px); }
