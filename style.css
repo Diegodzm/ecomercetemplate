@@ -29,7 +29,9 @@ body {
     animation: float 6s ease-in-out infinite;
 }
 
-
+.ecotitle {
+    font-weight: bold;
+}
 
 
 /* Apply it to the section titles you already marked in HTML */
