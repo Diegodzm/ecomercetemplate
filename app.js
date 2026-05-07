@@ -4,91 +4,91 @@
 const products = [
     {
         id: 1,
-        name: "Premium Wireless Headphones",
+        name: "Auriculares Inalámbricos Premium",
         price: 199.99,
         originalPrice: 299.99,
         image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=400&fit=crop",
         rating: 5,
         reviews: 124,
-        badge: "Sale",
-        category: "Electronics"
+        badge: "Oferta",
+        category: "Electrónicos"
     },
     {
         id: 2,
-        name: "Smart Watch Pro",
+        name: "Reloj Inteligente Pro",
         price: 349.99,
         originalPrice: 449.99,
         image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=400&fit=crop",
         rating: 4,
         reviews: 89,
-        badge: "Hot",
-        category: "Wearables"
+        badge: "Caliente",
+        category: "Vestibles"
     },
     {
         id: 3,
-        name: "Minimalist Desk Lamp",
+        name: "Lámpara de Escritorio Minimalista",
         price: 79.99,
         originalPrice: 99.99,
         image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=400&h=400&fit=crop",
         rating: 5,
         reviews: 56,
         badge: null,
-        category: "Home"
+        category: "Hogar"
     },
     {
         id: 4,
-        name: "Gaming Mechanical Keyboard",
+        name: "Teclado Mecánico para Juegos",
         price: 159.99,
         originalPrice: 199.99,
         image: "https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?w=400&h=400&fit=crop",
         rating: 4,
         reviews: 203,
         badge: "Popular",
-        category: "Gaming"
+        category: "Juegos"
     },
     {
         id: 5,
-        name: "Designer Sunglasses",
+        name: "Gafas de Sol de Diseño",
         price: 129.99,
         originalPrice: 179.99,
         image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=400&h=400&fit=crop",
         rating: 5,
         reviews: 67,
-        badge: "New",
-        category: "Fashion"
+        badge: "Nuevo",
+        category: "Moda"
     },
     {
         id: 6,
-        name: "Fitness Tracker Band",
+        name: "Banda de Seguimiento Fitness",
         price: 89.99,
         originalPrice: 129.99,
         image: "https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=400&h=400&fit=crop",
         rating: 4,
         reviews: 156,
-        badge: "Sale",
-        category: "Health"
+        badge: "Oferta",
+        category: "Salud"
     },
     {
         id: 7,
-        name: "Portable Bluetooth Speaker",
+        name: "Altavoz Bluetooth Portátil",
         price: 69.99,
         originalPrice: 89.99,
         image: "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400&h=400&fit=crop",
         rating: 4,
         reviews: 98,
         badge: null,
-        category: "Electronics"
+        category: "Electrónicos"
     },
     {
         id: 8,
-        name: "Leather Messenger Bag",
+        name: "Bolso de Mensajero de Cuero",
         price: 189.99,
         originalPrice: 249.99,
         image: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&h=400&fit=crop",
         rating: 5,
         reviews: 45,
-        badge: "Limited",
-        category: "Fashion"
+        badge: "Limitado",
+        category: "Moda"
     }
 ];
 
@@ -112,9 +112,9 @@ document.addEventListener('DOMContentLoaded', () => {
             );
             
             if (filteredProducts.length > 0) {
-                showToast(`Found ${filteredProducts.length} products!`, 'info');
+                showToast(`¡Encontrados ${filteredProducts.length} productos!`, 'info');
             } else {
-                showToast('No products found!', 'info');
+                showToast('¡No se encontraron productos!', 'info');
             }
         });
     }
@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const email = e.target.querySelector('input[type="email"]')?.value;
             if (email) {
-                showToast('Thank you for subscribing!', 'success');
+                showToast('¡Gracias por suscribirte!', 'success');
                 e.target.reset();
             }
         });
@@ -143,10 +143,10 @@ function renderProducts() {
                 <div class="product-image-container">
                     ${product.badge ? `<span class="badge bg-danger product-badge">${product.badge}</span>` : ''}
                     <div class="product-actions">
-                        <button class="btn btn-light" onclick="addToWishlist(${product.id})" title="Add to Wishlist">
+                        <button class="btn btn-light" onclick="addToWishlist(${product.id})" title="Agregar a Favoritos">
                             <i class="bi bi-heart"></i>
                         </button>
-                        <button class="btn btn-light" onclick="quickView(${product.id})" title="Quick View">
+                        <button class="btn btn-light" onclick="quickView(${product.id})" title="Vista Rápida">
                             <i class="bi bi-eye"></i>
                         </button>
                     </div>
@@ -166,7 +166,7 @@ function renderProducts() {
                 </div>
                 <div class="card-footer bg-transparent border-0 pt-0">
                     <button class="btn btn-primary w-100 add-to-cart-btn" onclick="addToCart(${product.id})">
-                        <i class="bi bi-cart-plus me-2"></i>Add to Cart
+                        <i class="bi bi-cart-plus me-2"></i>Agregar al Carrito
                     </button>
                 </div>
             </div>
@@ -205,7 +205,7 @@ function addToCart(productId) {
     
     updateCartCount();
     updateCartUI();
-    showToast(`${product.name} added to cart!`, 'success');
+    showToast(`${product.name} agregado al carrito!`, 'success');
 }
 
 // Remove from Cart
@@ -234,7 +234,7 @@ function clearCart() {
     cart = [];
     updateCartCount();
     updateCartUI();
-    showToast('Cart cleared!', 'info');
+    showToast('¡Carrito vaciado!', 'info');
 }
 
 // Update Cart Count Badge
@@ -249,7 +249,7 @@ function updateCartUI() {
     const cartSummary = document.getElementById('cart-summary');
     
     if (cart.length === 0) {
-        cartItems.innerHTML = '<p class="text-muted text-center py-5">Your cart is empty</p>';
+        cartItems.innerHTML = '<p class="text-muted text-center py-5">Tu carrito está vacío</p>';
         cartSummary.style.display = 'none';
         return;
     }
@@ -287,13 +287,13 @@ function updateCartUI() {
 // Add to Wishlist
 function addToWishlist(productId) {
     const product = products.find(p => p.id === productId);
-    showToast(`${product.name} added to wishlist!`, 'info');
+    showToast(`${product.name} agregado a favoritos!`, 'info');
 }
 
 // Quick View
 function quickView(productId) {
     const product = products.find(p => p.id === productId);
-    showToast(`Quick view for ${product.name}`, 'info');
+    showToast(`Vista rápida para ${product.name}`, 'info');
 }
 
 // Show Toast Notification
@@ -310,7 +310,7 @@ function showToast(message, type = 'success') {
         <div class="toast show" role="alert" style="min-width: 250px;">
             <div class="toast-header bg-${type === 'success' ? 'success' : type === 'info' ? 'info' : 'danger'} text-white">
                 <i class="bi bi-${type === 'success' ? 'check-circle' : type === 'info' ? 'info-circle' : 'exclamation-circle'} me-2"></i>
-                <strong class="me-auto">${type === 'success' ? 'Success' : type === 'info' ? 'Info' : 'Error'}</strong>
+                <strong class="me-auto">${type === 'success' ? 'Éxito' : type === 'info' ? 'Información' : 'Error'}</strong>
                 <button type="button" class="btn-close btn-close-white" onclick="this.parentElement.parentElement.parentElement.remove()"></button>
             </div>
             <div class="toast-body">
